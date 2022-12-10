@@ -18,15 +18,24 @@ app.use(express.json());
 app.get("/notes", (req, res) => {
     res.json(noteData);
     console.log(noteData);
-})
+});
 
 
 app.post("/api/notes", (req, res) => {
     console.log("the post route");
-    const newNote = req.body;
+    let newNote = req.body;
     newNote.id = uniqid();
     noteData.push(newNote);
     fs.writeFile("./db/db.json", JSON.stringify(noteData, null, 4),  (err) =>  {
         err ? console.log(err) : res.send(newNote);
     })
+});
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./public/index.html"))
+});
+
+app.listen(PORT, () => {
+    console.log(`listening to http://localHost:${PORT}`)
+
 })
