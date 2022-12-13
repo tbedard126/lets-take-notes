@@ -66,8 +66,8 @@ function deleteNotes(id, notesArray) {
         if (note.id == id) {
             notesArray.splice(i, i);
             fs.writeFileSync(
-                path.join(__dirname, "./db/db.json").
-                    JSON.stringify(notesArray, null, 2)
+                path.join(__dirname, "./db/db.json"),
+                JSON.stringify(notesArray, null, 2)
             );
 
             break;
