@@ -18,7 +18,7 @@ This is a project designed to help you be able to take notes down so that you do
 ![](./public/assets/images/screenshot.png)
 
 ## Installation:
-To install this appicaltion, gitclone the repo onto your local machine. Once you have the repo cloned into the machine open it up inside of a terminal. Typer npm i into the terminal and hit enter. This will get you the dependancies you need to run the project. After that you can just type node index.js and hit enter and this will run  the program for you.
+To install this appicaltion, gitclone the repo onto your local machine. Once you have the repo cloned into the machine open it up inside of a terminal. Typer npm i into the terminal and hit enter. This will get you the dependancies you need to run the project. After that you can just type node server.js and hit enter and this will run  the program for you.
             
 ## Usage:
 You use this application to take notes throughout your day.
