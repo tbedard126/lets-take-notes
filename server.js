@@ -1,3 +1,4 @@
+// modules needed
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
@@ -14,7 +15,7 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
+// all of the get routes needed to get the info from the stored notes
 app.get("/api/notes", (req, res) => {
     res.json(noteData.slice(1));
 });
@@ -31,6 +32,7 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./public/index.html"))
 });
 
+// function that creates the new notes with the input from the user
 function createNewNotes(body, notesArray) {
     const newNote = body;
     if (!Array.isArray(notesArray))
@@ -50,7 +52,7 @@ function createNewNotes(body, notesArray) {
     return newNote;
 };
 
-
+// posting the new notes onto the page
 app.post("/api/notes", (req, res) => {
     const newNote = createNewNotes(req.body, noteData)
     res.json(newNote);
@@ -58,7 +60,7 @@ app.post("/api/notes", (req, res) => {
 
 
 
-
+// the function we need to delete the notes from the database
 function deleteNotes(id, notesArray) {
     for (let i = 0; i < notesArray.length; i++) {
         let note = notesArray[i];
@@ -75,13 +77,14 @@ function deleteNotes(id, notesArray) {
     }
 }
 
+// the delete path for deleting the notes 
 app.delete("/api/notes/:id", (req, res) => {
     deleteNotes(req.params.id, noteData);
     res.json(true);
 })
 
-
+// for the local port we are using to host the server
 app.listen(PORT, () => {
-    console.log(`listening to http://localHost:${PORT}`)
+    console.log(`listening to http://localhost:${PORT}`)
 
 })
